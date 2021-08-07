@@ -31,11 +31,6 @@
   </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
 
 <style lang='scss'>
   $primary-color: #4b92db;
@@ -47,7 +42,7 @@ export default {
 .sidenav {
   position: fixed;
   background-color: $dark-color;
-  transition: width 600ms ease;
+  transition: width 0.4s ease;
   width: 7rem;
 }
 
@@ -86,10 +81,10 @@ export default {
 }
 
 .link-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   display: none;
-  // margin-left: 1rem;
-  letter-spacing: 2px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .nav-link i {
@@ -102,13 +97,10 @@ export default {
 /* Small screens */
 @media only screen and (max-width: 600px) {
   .sidenav {
+    margin: 0;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     height: 5rem;
-  }
-
-  .logo {
-    display: none;
   }
 
   .nav-list {
@@ -117,7 +109,13 @@ export default {
 
   .nav-link {
     justify-content: center;
+
+    i {
+      font-size: 3rem;
+        margin: 0;
+    }
   }
+
 }
 
 /* Large screens */
