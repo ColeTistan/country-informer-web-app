@@ -3,14 +3,23 @@
     <Sidebar />
     <main>
       <h2 class="logo">Country Informer</h2>
-      <form>
+      <form @submit.prevent="getCountryByName()">
         <div class="form-group">
           <!-- search for specific country -->
-          <input type="text" class="search-box" placeholder="Search for a country..." />
+          <input
+            type="text"
+            class="search-box"
+            placeholder="Search for a country..."
+            v-model="searchQuery"
+            v-on:keyup.enter.prevent="getCountryByName()"
+          />
         </div>
-        <div class="form-group">
-          <!-- select a continent -->
-          <select name="continent" id="continent">
+        <!-- <div class="form-group">
+          <select
+            name="continent"
+            id="continent"
+            
+          >
             <option value="all">All Continents</option>
             <option value="africa">Africa</option>
             <option value="americas">Americas</option>
@@ -18,7 +27,7 @@
             <option value="europe">Europe</option>
             <option value="oceania">Oceania</option>
           </select>
-        </div>
+        </div> -->
       </form>
       <section class="cards-wrapper">
         <Card />
@@ -35,6 +44,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Sidebar from '@/components/Sidebar.vue'
 import Card from '@/components/Card.vue'
 
@@ -43,6 +53,27 @@ export default {
   components: {
     Sidebar,
     Card
+  },
+  data() {
+    return {
+      urlBase: 'https://restcountries.eu/rest/v2',
+      countryName: 'name',
+      regionName: 'region',
+      searchQuery: '',
+      countries: []
+    }
+  },
+  methods: {
+    getCountryByName() {
+      axios.get(`${this.urlBase}/${this.countryName}/${this.searchQuery}`)
+        .then(res => {
+          this.countries = res.data
+          console.log(this.countries)
+        })
+      }
+    },
+  mounted() {
+    this.getCountryByName()
   }
 }
 </script>
@@ -122,20 +153,26 @@ export default {
       
       select {
         outline: none;
+        border: none;
         height: 2rem;
-        width: 7.5rem;
+        width: 10rem;
+        background: $light-color;
+        font-size: 1rem;
+        letter-spacing: 1px;
       }
 
 
       input.search-box {
+        font-size: 1rem;
         background: $light-color;
         outline: none;
         height: 2rem;
-        width: 12rem;
+        width: 15rem;
         text-align: center;
         border-radius: 16px;
         border: none;
         transition: 0.2s all ease-in;
+        letter-spacing: 1px;
       }
 
       
