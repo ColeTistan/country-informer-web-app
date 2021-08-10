@@ -1,0 +1,12 @@
+<div class="card" *ngFor="let country of countries">
+    <div class="card-header">
+        <img src="{{ country.flag }}" alt="Flag of {{ country.name }}">
+        <p class="country-name">{{ country.name }}</p>    
+    </div>
+    <div class="card-content">
+        <p>Capital: {{ country.capital }}</p>
+        <p>Region: {{ country.region }} Subregion: {{ country.subregion }}</p>
+        <p>Currency: {{country.currencies[0].code }} ({{ country.currencies[0].symbol }})</p>
+        <p>Native Language: {{ country.languages[0].name }}</p>
+    </div>
+</div>
