@@ -1,0 +1,53 @@
+@use 'src/assets/scss/variables';
+
+$content-center: center;
+
+.country-cards {
+    display: flex;
+    justify-content: $content-center;
+    align-items: $content-center;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: block;
+    justify-content: $content-center;
+    align-items: $content-center;
+
+    width: 20rem;
+    height: auto;
+
+    margin: 1rem;
+
+    border: 1px solid variables.$dark-color;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: variables.$info-color;
+
+    .card-header {
+        display: block;
+
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .country-name {
+            text-align: $content-center;
+            font-size: 2rem;
+        }
+    }
+
+    .card-content {
+        padding: 1rem;
+        text-align: $content-center;
+        p {
+            padding: 0.5rem;
+            font-size: 1rem;
+            
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+}
